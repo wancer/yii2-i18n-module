@@ -1,14 +1,14 @@
 <?php
 
-namespace Zelenin\yii\modules\I18n\console\controllers;
+namespace Wancer\yii\modules\I18n\console\controllers;
 
 use Yii;
 use yii\console\Controller;
 use yii\console\Exception;
 use yii\helpers\FileHelper;
 use yii\helpers\VarDumper;
-use Zelenin\yii\modules\I18n\models\Message;
-use Zelenin\yii\modules\I18n\models\SourceMessage;
+use Wancer\yii\modules\I18n\models\Message;
+use Wancer\yii\modules\I18n\models\SourceMessage;
 
 class I18nController extends Controller
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Zelenin\yii\modules\I18n\models\query;
+namespace Wancer\yii\modules\I18n\models\query;
 
 use Yii;
 use yii\db\ActiveQuery;
-use Zelenin\yii\modules\I18n\models\Message;
+use Wancer\yii\modules\I18n\models\Message;
 
 class SourceMessageQuery extends ActiveQuery
 {

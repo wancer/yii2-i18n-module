@@ -1,14 +1,14 @@
 <?php
 
-namespace Zelenin\yii\modules\I18n;
+namespace Wancer\yii\modules\I18n;
 
 use Yii;
 use yii\i18n\MissingTranslationEvent;
-use Zelenin\yii\modules\I18n\models\SourceMessage;
+use Wancer\yii\modules\I18n\models\SourceMessage;
 
 /**
  * Class Module
- * @package Zelenin\yii\modules\I18n
+ * @package Wancer\yii\modules\I18n
  */
 class Module extends \yii\base\Module
 {
@@ -22,7 +22,7 @@ class Module extends \yii\base\Module
      */
     public static function t($message, $params = [], $language = null)
     {
-        return Yii::t('zelenin/modules/i18n', $message, $params, $language);
+        return Yii::t('wancer/modules/i18n', $message, $params, $language);
     }
 
     /**

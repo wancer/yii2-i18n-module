@@ -6,8 +6,8 @@
 
 use yii\helpers\Html;
 use yii\web\View;
-use Zelenin\yii\modules\I18n\models\SourceMessage;
-use Zelenin\yii\modules\I18n\Module;
+use Wancer\yii\modules\I18n\models\SourceMessage;
+use Wancer\yii\modules\I18n\Module;
 
 $this->title = Module::t('Update') . ': ' . $model->message;
 echo \yii\widgets\Breadcrumbs::widget(['links' => [

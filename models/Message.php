@@ -1,15 +1,15 @@
 <?php
 
-namespace Zelenin\yii\modules\I18n\models;
+namespace Wancer\yii\modules\I18n\models;
 
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\db\ActiveRecord;
-use Zelenin\yii\modules\I18n\Module;
+use Wancer\yii\modules\I18n\Module;
 
 /**
  * Class Message
- * @package Zelenin\yii\modules\I18n\models
+ * @package Wancer\yii\modules\I18n\models
  *
  * @property integer $id
  * @property string $language

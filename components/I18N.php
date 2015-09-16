@@ -1,6 +1,6 @@
 <?php
 
-namespace Zelenin\yii\modules\I18n\components;
+namespace Wancer\yii\modules\I18n\components;
 
 use yii\base\InvalidConfigException;
 use yii\i18n\DbMessageSource;
@@ -14,7 +14,7 @@ class I18N extends \yii\i18n\I18N
     /** @var array */
     public $languages;
     /** @var array */
-    public $missingTranslationHandler = ['Zelenin\yii\modules\I18n\Module', 'missingTranslation'];
+    public $missingTranslationHandler = ['Wancer\yii\modules\I18n\Module', 'missingTranslation'];
 
     public $db = 'db';
 

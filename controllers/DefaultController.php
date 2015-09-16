@@ -1,19 +1,19 @@
 <?php
 
-namespace Zelenin\yii\modules\I18n\controllers;
+namespace Wancer\yii\modules\I18n\controllers;
 
 use Yii;
 use yii\base\Model;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
-use Zelenin\yii\modules\I18n\models\search\SourceMessageSearch;
-use Zelenin\yii\modules\I18n\models\SourceMessage;
-use Zelenin\yii\modules\I18n\Module;
+use Wancer\yii\modules\I18n\models\search\SourceMessageSearch;
+use Wancer\yii\modules\I18n\models\SourceMessage;
+use Wancer\yii\modules\I18n\Module;
 
 /**
  * Class DefaultController
- * @package Zelenin\yii\modules\I18n\controllers
+ * @package Wancer\yii\modules\I18n\controllers
  */
 class DefaultController extends Controller
 {
