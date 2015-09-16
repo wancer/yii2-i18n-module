@@ -7,6 +7,16 @@ use yii\base\InvalidConfigException;
 use yii\db\ActiveRecord;
 use Zelenin\yii\modules\I18n\Module;
 
+/**
+ * Class Message
+ * @package Zelenin\yii\modules\I18n\models
+ *
+ * @property integer $id
+ * @property string $language
+ * @property string $translation
+ *
+ * @property SourceMessage $sourceMessage
+ */
 class Message extends ActiveRecord
 {
     /**
@@ -54,6 +64,9 @@ class Message extends ActiveRecord
         ];
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getSourceMessage()
     {
         return $this->hasOne(SourceMessage::className(), ['id' => 'id']);

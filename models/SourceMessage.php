@@ -8,6 +8,16 @@ use yii\db\ActiveRecord;
 use Zelenin\yii\modules\I18n\models\query\SourceMessageQuery;
 use Zelenin\yii\modules\I18n\Module;
 
+/**
+ * Class SourceMessage
+ * @package Zelenin\yii\modules\I18n\models
+ *
+ * @property integer $id
+ * @property string $message
+ * @property string $category
+ *
+ * @property Message[] $messages
+ */
 class SourceMessage extends ActiveRecord
 {
     /**
@@ -31,6 +41,9 @@ class SourceMessage extends ActiveRecord
         return $i18n->sourceMessageTable;
     }
 
+    /**
+     * @return SourceMessageQuery
+     */
     public static function find()
     {
         return new SourceMessageQuery(get_called_class());
@@ -59,6 +72,9 @@ class SourceMessage extends ActiveRecord
         ];
     }
 
+    /**
+     * @return $this
+     */
     public function getMessages()
     {
         return $this->hasMany(Message::className(), ['id' => 'id'])->indexBy('language');

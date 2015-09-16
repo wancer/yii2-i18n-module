@@ -26,7 +26,6 @@
     },
     "require": {
         "yiisoft/yii2": "~2",
-        "zelenin/yii2-semantic-ui": "*"
     },
     "autoload": {
         "psr-4": {
