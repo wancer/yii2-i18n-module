@@ -3,8 +3,12 @@
  * @var View $this
  * @var SourceMessageSearch $searchModel
  * @var ActiveDataProvider $dataProvider
+ * @var int $languagesCount
  */
 
+use Wancer\yii\modules\I18n\models\search\SourceMessageSearch;
+use Wancer\yii\modules\I18n\models\SourceMessage;
+use Wancer\yii\modules\I18n\Module;
 use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
@@ -12,8 +16,6 @@ use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\Breadcrumbs;
 use yii\widgets\Pjax;
-use Wancer\yii\modules\I18n\models\search\SourceMessageSearch;
-use Wancer\yii\modules\I18n\Module;
 
 $this->title = Module::t('Translations');
 echo Breadcrumbs::widget(['links' => [
@@ -39,14 +41,14 @@ echo Breadcrumbs::widget(['links' => [
 			[
 				'attribute' => 'message',
 				'format' => 'raw',
-				'value' => function (\Wancer\yii\modules\I18n\models\SourceMessage $model)
+				'value' => function (SourceMessage $model)
 				{
 					return Html::a($model->message, ['update', 'id' => $model->id], ['data' => ['pjax' => 0]]);
 				}
 			],
 			[
 				'attribute' => 'category',
-				'value' => function (\Wancer\yii\modules\I18n\models\SourceMessage $model)
+				'value' => function (SourceMessage $model)
 				{
 					return $model->category;
 				},
@@ -54,14 +56,24 @@ echo Breadcrumbs::widget(['links' => [
 			],
 			[
 				'attribute' => 'status',
-				'value' => function (\Wancer\yii\modules\I18n\models\SourceMessage $model)
+				'value' => function (SourceMessage $model) use ($languagesCount)
 				{
 					$count = 0;
 					foreach ($model->messages as $message)
 					{
 						$count += (bool)(!empty($message->translation));
 					}
-					return $count;
+
+					if ($count == $languagesCount)
+					{
+						$text = Module::t('Translated');
+					}
+					else
+					{
+						$text = Module::t('Not translated');
+					}
+
+					return $text;
 				},
 				'filter' => $searchModel->getStatus()
 			]

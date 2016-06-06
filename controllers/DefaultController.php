@@ -2,14 +2,14 @@
 
 namespace Wancer\yii\modules\I18n\controllers;
 
+use Wancer\yii\modules\I18n\models\search\SourceMessageSearch;
+use Wancer\yii\modules\I18n\models\SourceMessage;
+use Wancer\yii\modules\I18n\Module;
 use Yii;
 use yii\base\Model;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
-use Wancer\yii\modules\I18n\models\search\SourceMessageSearch;
-use Wancer\yii\modules\I18n\models\SourceMessage;
-use Wancer\yii\modules\I18n\Module;
 
 /**
  * Class DefaultController
@@ -24,9 +24,11 @@ class DefaultController extends Controller
 	{
 		$searchModel = new SourceMessageSearch;
 		$dataProvider = $searchModel->search(Yii::$app->getRequest()->get());
+
 		return $this->render('index', [
 			'searchModel' => $searchModel,
-			'dataProvider' => $dataProvider
+			'dataProvider' => $dataProvider,
+			'languagesCount' => count(Yii::$app->getI18n()->languages)
 		]);
 	}
 
@@ -44,8 +46,10 @@ class DefaultController extends Controller
 		{
 			$model->saveMessages();
 			Yii::$app->getSession()->setFlash('success', Module::t('Updated'));
+
 			return $this->redirect(['update', 'id' => $model->id]);
-		} else
+		}
+		else
 		{
 			return $this->render('update', ['model' => $model]);
 		}
@@ -59,13 +63,12 @@ class DefaultController extends Controller
 	protected function findModel($id)
 	{
 		$query = SourceMessage::find()->where('id = :id', [':id' => $id]);
-		$models = is_array($id)
-			? $query->all()
-			: $query->one();
+		$models = is_array($id) ? $query->all() : $query->one();
 		if (!empty($models))
 		{
 			return $models;
-		} else
+		}
+		else
 		{
 			throw new NotFoundHttpException(Module::t('The requested page does not exist'));
 		}
