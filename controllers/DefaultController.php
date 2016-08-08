@@ -55,6 +55,22 @@ class DefaultController extends Controller
 		}
 	}
 
+	public function actionFlushUntranslated() {
+		$searchModel = new SourceMessageSearch();
+		$dataProvider = $searchModel
+			->search(['SourceMessageSearch' => ['status' => SourceMessageSearch::STATUS_NOT_TRANSLATED]]);
+		/* @var $model SourceMessage */
+		while ($models = $dataProvider->getModels()) {
+			var_dump(sizeof($models));
+			foreach ($models as $model)
+			{
+				$model->delete();
+				$dataProvider = $searchModel
+					->search(['SourceMessageSearch' => ['status' => SourceMessageSearch::STATUS_NOT_TRANSLATED]]);
+			}
+		}
+	}
+
 	/**
 	 * @param array|integer $id
 	 * @return SourceMessage|SourceMessage[]

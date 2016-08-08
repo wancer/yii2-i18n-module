@@ -8,6 +8,10 @@ use yii\helpers\ArrayHelper;
 use Wancer\yii\modules\I18n\models\SourceMessage;
 use Wancer\yii\modules\I18n\Module;
 
+/**
+ * Class SourceMessageSearch
+ * @package Wancer\yii\modules\I18n\models\search
+ */
 class SourceMessageSearch extends SourceMessage
 {
     const STATUS_TRANSLATED = 1;
@@ -50,10 +54,15 @@ class SourceMessageSearch extends SourceMessage
         $query
             ->andFilterWhere(['like', 'category', $this->category])
             ->andFilterWhere(['like', 'message', $this->message]);
+
         return $dataProvider;
     }
 
-    public static function getStatus($id = null)
+    /**
+     * @param int|null $id
+     * @return array
+     */
+    public static function getStatus(int $id = null) :array
     {
         $statuses = [
             self::STATUS_TRANSLATED => Module::t('Translated'),

@@ -7,6 +7,10 @@ use yii\base\BootstrapInterface;
 use yii\data\Pagination;
 use Wancer\yii\modules\I18n\console\controllers\I18nController;
 
+/**
+ * Class Bootstrap
+ * @package Wancer\yii\modules\I18n
+ */
 class Bootstrap implements BootstrapInterface
 {
     /**
@@ -18,6 +22,7 @@ class Bootstrap implements BootstrapInterface
             $moduleId = $i18nModule->id;
             $app->getUrlManager()->addRules([
                 'translations/<id:\d+>' => $moduleId . '/default/update',
+                'translations/flush-untranslated' => $moduleId . '/default/flush-untranslated',
                 'translations/page/<page:\d+>' => $moduleId . '/default/index',
                 'translations' => $moduleId . '/default/index',
             ], false);

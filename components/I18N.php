@@ -5,6 +5,10 @@ namespace Wancer\yii\modules\I18n\components;
 use yii\base\InvalidConfigException;
 use yii\i18n\DbMessageSource;
 
+/**
+ * Class I18N
+ * @package Wancer\yii\modules\I18n\components
+ */
 class I18N extends \yii\i18n\I18N
 {
     /** @var string */

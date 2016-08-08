@@ -14,6 +14,7 @@ use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\web\View;
+use \yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use yii\widgets\Pjax;
 
@@ -23,6 +24,10 @@ echo Breadcrumbs::widget(['links' => [
 ]]);
 ?>
 <div class="message-index">
+	<div class="pull-right">
+		<a class="btn btn-danger" href="<?=Url::toRoute('/translations/flush-untranslated')?>">Remove untranslated</a>
+	</div>
+
 	<h3><?= Html::encode($this->title) ?></h3>
 	<?php
 	Pjax::begin();
